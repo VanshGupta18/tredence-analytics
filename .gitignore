@@ -12,7 +12,8 @@ wheels/
 
 # Data and Results (auto-generated, not tracked)
 data/
-results/
+results/*
+!results/gate_distributions.png
 *.log
 *.pt
 *.ckpt

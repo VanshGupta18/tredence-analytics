@@ -15,8 +15,12 @@ Visualization plan (from plan.md):
 import torch
 import matplotlib.pyplot as plt
 
-from prunable_linear import PrunableLinear
-from model import SparsityAwareNet
+try:
+    from .prunable_linear import PrunableLinear
+    from .model import SparsityAwareNet
+except ImportError:
+    from prunable_linear import PrunableLinear
+    from model import SparsityAwareNet
 
 
 def compute_sparsity(model, threshold=1e-2):
@@ -84,13 +88,16 @@ def evaluate_all_experiments():
     Returns:
         results: list of dicts with metrics for each λ
     """
-    from train import get_cifar10_loaders, evaluate
+    try:
+        from .train import get_cifar10_loaders, evaluate
+    except ImportError:
+        from train import get_cifar10_loaders, evaluate
 
     lambda_values = [1e-5, 1e-4, 1e-3]
     lambda_names = ["low", "medium", "high"]
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    _, test_loader = get_cifar10_loaders(batch_size=256)
+    _, _, test_loader = get_cifar10_loaders(batch_size=256)
 
     results = []
 

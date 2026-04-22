@@ -19,8 +19,12 @@ import torchvision
 import torchvision.transforms as transforms
 from typing import Dict, List, Tuple, Optional
 
-from prunable_linear import PrunableLinear
-from model import SparsityAwareNet
+try:
+    from .prunable_linear import PrunableLinear
+    from .model import SparsityAwareNet
+except ImportError:
+    from prunable_linear import PrunableLinear
+    from model import SparsityAwareNet
 
 
 class Callback:

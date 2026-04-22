@@ -15,7 +15,10 @@ Enhanced with:
 
 import torch.nn as nn
 
-from prunable_linear import PrunableLinear
+try:
+    from .prunable_linear import PrunableLinear
+except ImportError:
+    from prunable_linear import PrunableLinear
 
 
 class SparsityAwareNet(nn.Module):
