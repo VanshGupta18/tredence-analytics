@@ -9,11 +9,16 @@ Runs systematic hyperparameter search with:
 """
 
 import os
+import sys
 import torch
 import json
-from train import train_with_early_stopping
-from evaluate import compute_sparsity, count_active_weights
-from model import SparsityAwareNet
+
+# Add parent directory to path to import from core/
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from core.train import train_with_early_stopping
+from core.evaluate import compute_sparsity, count_active_weights
+from core.model import SparsityAwareNet
 
 
 def run_hyperparameter_tuning():
