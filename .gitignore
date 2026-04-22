@@ -8,3 +8,31 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Data and results (do not track datasets or outputs)
+data/
+results/
+
+# Logs and checkpoints
+*.log
+*.pt
+*.ckpt
+
+# Jupyter/Colab notebook checkpoints
+.ipynb_checkpoints/
+
+# System/editor files
+.DS_Store
+*.swp
+*.swo
+
+# Python environment/version files
+.python-version
+uv.lock
+
+# Compressed files
+*.tar.gz
+*.zip
+
+# Ignore local test files
+ziUs3x2S
